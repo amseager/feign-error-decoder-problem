@@ -1,0 +1,29 @@
+
+
+testengine:
+  auto-configured-url: http://please-only-use-the-test-engine-service.nonexistingurl
+  auto-configured-username: default
+  auto-configured-password: default
+  test-engines:
+    TEST_TEST_ENGINE:
+      url: http://localhost:4400/
+      username: none
+      password: none
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.a.b.test: DEBUG
+    com.a.b.test.rest.outgoing.TestEngineRestClient: DEBUG
+    com.atlassian: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.security: ERROR
+    org.hibernate: ERROR
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+        retryer: com.a.b.test.configurations.CustomRetryer

@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: Test
+  # Multi File Upload
+  servlet:
+    multipart:
+      # Enable multipart uploads
+      enabled: true
+      # Threshold after which files are written to disk:
+      file-size-threshold: 2MB
+      max-file-size: 20MB
+      max-request-size: 22MB
+      # File Storage Properties
+      # All files uploaded through the REST API will be stored in this directory
+      location: ${java.io.tmpdir}
+  output:
+    ansi:
+      enabled: DETECT
+
+server:
+  port: 23953
+  tomcat:
+    connection-timeout: -1
