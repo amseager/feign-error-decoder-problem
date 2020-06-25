@@ -3,9 +3,7 @@ package com.a.b.test.configurations;
 import feign.Response;
 import feign.RetryableException;
 import feign.codec.ErrorDecoder;
-import org.springframework.stereotype.Component;
 
-@Component
 public class CustomErrorDecoder implements ErrorDecoder {
 
     private final ErrorDecoder defaultErrorDecoder = new Default();

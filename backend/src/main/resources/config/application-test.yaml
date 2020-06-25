@@ -1,5 +1,3 @@
-
-
 testengine:
   auto-configured-url: http://please-only-use-the-test-engine-service.nonexistingurl
   auto-configured-username: default
@@ -31,3 +29,4 @@ feign:
       default:
         loggerLevel: full
         retryer: com.a.b.test.configurations.CustomRetryer
+        errorDecoder: com.a.b.test.configurations.CustomErrorDecoder

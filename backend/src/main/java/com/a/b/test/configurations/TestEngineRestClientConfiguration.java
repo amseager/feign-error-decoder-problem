@@ -4,7 +4,6 @@ import feign.Contract;
 import feign.Logger;
 import feign.Request;
 import feign.RequestInterceptor;
-import feign.codec.ErrorDecoder;
 import org.springframework.cloud.openfeign.support.SpringMvcContract;
 import org.springframework.context.annotation.Bean;
 
@@ -42,11 +41,6 @@ public class TestEngineRestClientConfiguration {
             String headerValue = "Basic " + encodeBase64(testEngineConfig);
             template.header("Authorization", headerValue);
         };
-    }
-
-    @Bean
-    public ErrorDecoder errorDecoder() {
-        return new CustomErrorDecoder();
     }
 
     private static String encodeBase64(TestEngineConfiguration testEngineConfig) {
