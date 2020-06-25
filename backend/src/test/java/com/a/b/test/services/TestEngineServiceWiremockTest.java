@@ -21,7 +21,7 @@ class TestEngineServiceWiremockTest extends IntegrationTestBase {
         WireMockServer testEngineServer = new WireMockServer(options().port(4400));
         testEngineServer.start();
         configureFor("localhost", 4400);
-        stubFor(get("/get-report/test")
+        stubFor(get("/test")
                         .willReturn(aResponse().withStatus(504)));
 
         testEngineService.getReport("test", TEST_TEST_ENGINE);

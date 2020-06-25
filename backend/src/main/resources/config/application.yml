@@ -16,8 +16,10 @@ spring:
   output:
     ansi:
       enabled: DETECT
+  profiles:
+    active: test
 
 server:
-  port: 23953
+  port: 4100
   tomcat:
     connection-timeout: -1

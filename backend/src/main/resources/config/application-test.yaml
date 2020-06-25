@@ -9,6 +9,10 @@ testengine:
       url: http://localhost:4400/
       username: none
       password: none
+    TEST2_TEST_ENGINE:
+      url: http://httpstat.us/
+      username: none
+      password: none
 
 # Logging
 logging:

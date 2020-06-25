@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "testEngineRestClient", url = "http://some-url-that-should-not-be.used", configuration = TestEngineRestClientConfiguration.class)
 public interface TestEngineRestClient {
 
-    @GetMapping(value = "/get-report/{uuid}")
+    @GetMapping(value = "/{uuid}")
     Response getReport(@PathVariable String uuid);
 }
