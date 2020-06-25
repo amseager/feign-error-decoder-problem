@@ -37,7 +37,7 @@ public class TestEngineService {
         testEngineConfiguration.setAutoConfiguredPassword(testEngineConfig.get(TestEnginesConfigItems.PASSWORD));
     }
 
-    public Response getReport(String uuid, TestEngines testEngine) {
+    public String getReport(String uuid, TestEngines testEngine) {
         setConfigurablePropertiesToSpecificTestEngineProperties(testEngine);
         return testEngineRestClient.getReport(uuid);
     }

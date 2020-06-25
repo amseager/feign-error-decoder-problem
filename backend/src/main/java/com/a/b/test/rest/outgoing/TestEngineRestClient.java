@@ -7,5 +7,5 @@ import feign.Response;
 public interface TestEngineRestClient {
 
     @RequestLine(value = "GET /{uuid}")
-    Response getReport(@Param("uuid") String uuid);
+    String getReport(@Param("uuid") String uuid);
 }
