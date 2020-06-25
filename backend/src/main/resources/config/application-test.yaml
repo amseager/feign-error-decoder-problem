@@ -29,4 +29,3 @@ feign:
       default:
         loggerLevel: full
         retryer: com.a.b.test.configurations.CustomRetryer
-        errorDecoder: com.a.b.test.configurations.CustomErrorDecoder

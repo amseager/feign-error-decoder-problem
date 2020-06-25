@@ -4,7 +4,6 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.a.b.test.configurations.TestEngines.TEST_TEST_ENGINE;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
@@ -24,7 +23,11 @@ class TestEngineServiceWiremockTest extends IntegrationTestBase {
         stubFor(get("/test")
                         .willReturn(aResponse().withStatus(504)));
 
-        testEngineService.getReport("test", TEST_TEST_ENGINE);
+//        In this case where the rest client is built via the feign builder
+//        this test will not test the right thing.
+//        To test the ErrorDecoder start the app and run a GET request against http://localhost:4100/504
+
+//        testEngineService.getReport("test", TEST_TEST_ENGINE);
 
         testEngineServer.stop();
     }

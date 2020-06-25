@@ -2,11 +2,16 @@ package com.a.b.test.services;
 
 import java.util.HashMap;
 
+import com.a.b.test.configurations.CustomErrorDecoder;
+import com.a.b.test.configurations.CustomRetryer;
 import com.a.b.test.configurations.TestEngineConfiguration;
 import com.a.b.test.configurations.TestEngines;
 import com.a.b.test.configurations.TestEnginesConfigItems;
 import com.a.b.test.rest.outgoing.TestEngineRestClient;
+import feign.Feign;
+import feign.Logger;
 import feign.Response;
+import feign.slf4j.Slf4jLogger;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,8 +19,13 @@ public class TestEngineService {
     private final TestEngineRestClient testEngineRestClient;
     private final TestEngineConfiguration testEngineConfiguration;
 
-    public TestEngineService(TestEngineRestClient testEngineRestClient, TestEngineConfiguration testEngineConfiguration) {
-        this.testEngineRestClient = testEngineRestClient;
+    public TestEngineService(TestEngineConfiguration testEngineConfiguration) {
+        this.testEngineRestClient = Feign.builder()
+                                         .logger(new Slf4jLogger(TestEngineRestClient.class))
+                                         .logLevel(Logger.Level.FULL)
+                                         .errorDecoder(new CustomErrorDecoder())
+                                         .retryer(new CustomRetryer())
+                                         .target(TestEngineRestClient.class, "http://httpstat.us");
         this.testEngineConfiguration = testEngineConfiguration;
     }
 
